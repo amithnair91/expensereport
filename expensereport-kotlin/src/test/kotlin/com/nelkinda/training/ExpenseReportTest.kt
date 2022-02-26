@@ -91,6 +91,44 @@ class ExpenseReportTest {
         )
     }
 
+
+    @Test
+    fun carRentalExpenseReport() {
+        val date = Date(1645872240)
+
+        ExpenseReport().printReport(
+            date, listOf(
+                createExpense(0, ExpenseType.CAR_RENTAL),
+                createExpense(-100, ExpenseType.CAR_RENTAL),
+                createExpense(999, ExpenseType.CAR_RENTAL),
+                createExpense(1000, ExpenseType.CAR_RENTAL),
+                createExpense(1001, ExpenseType.CAR_RENTAL),
+                createExpense(4000, ExpenseType.CAR_RENTAL),
+                createExpense(4999, ExpenseType.CAR_RENTAL),
+                createExpense(5000, ExpenseType.CAR_RENTAL),
+                createExpense(5001, ExpenseType.CAR_RENTAL),
+                createExpense(1000000, ExpenseType.CAR_RENTAL)
+            )
+        )
+
+        assertEquals(
+            "Expenses Tue Jan 20 05:11:12 GST 1970\n" +
+                    "Car Rental\t0\t \n" +
+                    "Car Rental\t-100\t \n" +
+                    "Car Rental\t999\t \n" +
+                    "Car Rental\t1000\t \n" +
+                    "Car Rental\t1001\t \n" +
+                    "Car Rental\t4000\t \n" +
+                    "Car Rental\t4999\t \n" +
+                    "Car Rental\t5000\t \n" +
+                    "Car Rental\t5001\t \n" +
+                    "Car Rental\t1000000\t \n" +
+                    "Meal expenses: 0\n" +
+                    "Total expenses: 1021900\n", outContent.toString()
+        )
+    }
+
+
     private fun createExpense(amt: Int, expenseType: ExpenseType): Expense {
         val dinnerExpense = Expense()
         dinnerExpense.type = expenseType
