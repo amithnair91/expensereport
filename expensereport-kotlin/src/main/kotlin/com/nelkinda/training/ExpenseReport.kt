@@ -9,6 +9,9 @@ enum class ExpenseType {
 class Expense {
     lateinit var type: ExpenseType
     var amount: Int = 0
+
+    fun isMeal() =
+        this.type == ExpenseType.DINNER || this.type == ExpenseType.BREAKFAST
 }
 
 class ExpenseReport {
@@ -24,7 +27,7 @@ class ExpenseReport {
 
 
         for (expense in expenses) {
-            if (expense.type == ExpenseType.DINNER || expense.type == ExpenseType.BREAKFAST) {
+            if (expense.isMeal()) {
                 mealExpenses += expense.amount
             }
 
