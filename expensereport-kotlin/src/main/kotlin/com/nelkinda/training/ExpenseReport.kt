@@ -1,7 +1,6 @@
 package com.nelkinda.training
 
 import java.util.*
-import kotlin.collections.ArrayList
 
 enum class ExpenseType {
     DINNER, BREAKFAST, CAR_RENTAL
@@ -43,6 +42,14 @@ class Expenses(private val expenses: List<Expense>) : Iterable<Expense> {
         return mealExpenses
     }
 
+    fun total(): Int {
+        var total = 0
+        for (expense in expenses) {
+            total += expense.amount
+        }
+        return total
+    }
+
 }
 
 class ExpenseReport {
@@ -53,20 +60,9 @@ class ExpenseReport {
 
     fun printReport(date: Date, expenses: Expenses) {
         println("Expenses $date")
-        var total = 0
-
-        var mealExpenses = expenses.meals()
-
-        for (expense in expenses) {
-
-            total += expense.amount
-        }
-
         reportExpenses(expenses)
-
-
-        println("Meal expenses: $mealExpenses")
-        println("Total expenses: $total")
+        println("Meal expenses: ${expenses.meals()}")
+        println("Total expenses: ${expenses.total()}")
     }
 
     private fun reportExpenses(expenses: Expenses) {
