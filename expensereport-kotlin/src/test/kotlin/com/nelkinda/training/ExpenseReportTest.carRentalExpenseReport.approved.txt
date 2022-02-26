@@ -1,0 +1,13 @@
+Expenses Tue Jan 20 02:11:12 CET 1970
+Car Rental	0	 
+Car Rental	-100	 
+Car Rental	999	 
+Car Rental	1000	 
+Car Rental	1001	 
+Car Rental	4000	 
+Car Rental	4999	 
+Car Rental	5000	 
+Car Rental	5001	 
+Car Rental	1000000	 
+Meal expenses: 0
+Total expenses: 1021900

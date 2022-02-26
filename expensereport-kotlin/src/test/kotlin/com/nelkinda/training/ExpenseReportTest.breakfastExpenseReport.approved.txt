@@ -1,0 +1,13 @@
+Expenses Tue Jan 20 02:11:12 CET 1970
+Breakfast	0	 
+Breakfast	-100	 
+Breakfast	999	 
+Breakfast	1000	 
+Breakfast	1001	X
+Breakfast	4000	X
+Breakfast	4999	X
+Breakfast	5000	X
+Breakfast	5001	X
+Breakfast	1000000	X
+Meal expenses: 1021900
+Total expenses: 1021900
