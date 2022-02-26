@@ -1,15 +1,10 @@
 package com.nelkinda.training
 
-import org.approvaltests.ApprovalUtilities
 import org.approvaltests.Approvals
-import org.approvaltests.core.Options
-import org.approvaltests.reporters.UseReporter
-import org.approvaltests.reporters.intellij.IntelliJReporter
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import java.io.ByteArrayOutputStream
-import java.io.OutputStream
 import java.io.PrintStream
 import java.util.Date
 
@@ -38,12 +33,12 @@ class ExpenseReportTest {
 
         ExpenseReport().printReport(
             date, listOf(
-                dinnerExpense(0),
-                dinnerExpense(-100),
-                dinnerExpense(1000),
-                dinnerExpense(4000),
-                dinnerExpense(5000),
-                dinnerExpense(1000000)
+                createExpense(0, ExpenseType.DINNER),
+                createExpense(-100, ExpenseType.DINNER),
+                createExpense(1000, ExpenseType.DINNER),
+                createExpense(4000, ExpenseType.DINNER),
+                createExpense(5000, ExpenseType.DINNER),
+                createExpense(1000000, ExpenseType.DINNER)
             )
         )
 
@@ -58,9 +53,9 @@ class ExpenseReportTest {
                 "Total expenses: 1009900\n",outContent.toString())
     }
 
-    private fun dinnerExpense(amt: Int): Expense {
+    private fun createExpense(amt: Int, expenseType: ExpenseType): Expense {
         val dinnerExpense = Expense()
-        dinnerExpense.type = ExpenseType.DINNER
+        dinnerExpense.type = expenseType
         dinnerExpense.amount = amt
         return dinnerExpense
     }
