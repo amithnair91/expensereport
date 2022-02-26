@@ -128,6 +128,24 @@ class ExpenseReportTest {
         )
     }
 
+    @Test
+    fun miscellaneousExpenseReport() {
+        val date = Date(1645872240)
+
+        ExpenseReport().printReport(
+            date, listOf(
+                createExpense(0, ExpenseType.CAR_RENTAL),
+                createExpense(-100, ExpenseType.BREAKFAST),
+                createExpense(999, ExpenseType.DINNER),
+                createExpense(1000, ExpenseType.CAR_RENTAL),
+                createExpense(1001, ExpenseType.BREAKFAST),
+                createExpense(4000, ExpenseType.DINNER)
+            )
+        )
+
+        Approvals.verify(outContent)
+    }
+
 
     private fun createExpense(amt: Int, expenseType: ExpenseType): Expense {
         val dinnerExpense = Expense()
