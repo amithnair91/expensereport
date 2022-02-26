@@ -32,6 +32,17 @@ class Expenses(private val expenses: List<Expense>) : Iterable<Expense> {
     override fun iterator(): Iterator<Expense> {
         return expenses.iterator()
     }
+
+    fun meals(): Int {
+        var mealExpenses = 0
+        for (expense in expenses) {
+            if (expense.isMeal()) {
+                mealExpenses += expense.amount
+            }
+        }
+        return mealExpenses
+    }
+
 }
 
 class ExpenseReport {
@@ -44,7 +55,7 @@ class ExpenseReport {
         println("Expenses $date")
         var total = 0
 
-        var mealExpenses = meals(expenses)
+        var mealExpenses = expenses.meals()
 
         for (expense in expenses) {
 
@@ -56,16 +67,6 @@ class ExpenseReport {
 
         println("Meal expenses: $mealExpenses")
         println("Total expenses: $total")
-    }
-
-    private fun meals(expenses: Expenses): Int {
-        var mealExpenses = 0
-        for (expense in expenses) {
-            if (expense.isMeal()) {
-                mealExpenses += expense.amount
-            }
-        }
-        return mealExpenses
     }
 
     private fun reportExpenses(expenses: Expenses) {
