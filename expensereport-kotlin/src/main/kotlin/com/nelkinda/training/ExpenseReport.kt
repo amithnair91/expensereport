@@ -13,10 +13,15 @@ class Expense {
 
 class ExpenseReport {
     fun printReport(expenses: List<Expense>) {
+        val date = Date()
+        printReport(date, expenses)
+    }
+
+    fun printReport(date: Date, expenses: List<Expense>) {
+        println("Expenses $date")
         var total = 0
         var mealExpenses = 0
 
-        println("Expenses ${Date()}")
 
         for (expense in expenses) {
             if (expense.type == ExpenseType.DINNER || expense.type == ExpenseType.BREAKFAST) {
@@ -30,7 +35,8 @@ class ExpenseReport {
                 ExpenseType.CAR_RENTAL -> expenseName = "Car Rental"
             }
 
-            val mealOverExpensesMarker = if (expense.type == ExpenseType.DINNER && expense.amount > 5000 || expense.type == ExpenseType.BREAKFAST && expense.amount > 1000) "X" else " "
+            val mealOverExpensesMarker =
+                if (expense.type == ExpenseType.DINNER && expense.amount > 5000 || expense.type == ExpenseType.BREAKFAST && expense.amount > 1000) "X" else " "
 
             println(expenseName + "\t" + expense.amount + "\t" + mealOverExpensesMarker)
 

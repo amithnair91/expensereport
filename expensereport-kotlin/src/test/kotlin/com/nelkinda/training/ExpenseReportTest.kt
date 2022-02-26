@@ -2,20 +2,17 @@ package com.nelkinda.training
 
 import org.approvaltests.ApprovalUtilities
 import org.approvaltests.Approvals
-import org.approvaltests.approvers.ApprovalApprover
-import org.approvaltests.core.ApprovalWriter
-import org.approvaltests.namer.ApprovalResults
 import org.junit.jupiter.api.Test
+import java.util.Date
 
 class ExpenseReportTest {
 
-
-
     @Test
-    fun emptyExpenseReport(){
+    fun emptyExpenseReport() {
         val approval = ApprovalUtilities().writeSystemOutToStringBuffer()
+        val date = Date(1645872240)
 
-        ExpenseReport().printReport(emptyList())
+        ExpenseReport().printReport(date, emptyList())
 
         Approvals.verify(approval)
     }
