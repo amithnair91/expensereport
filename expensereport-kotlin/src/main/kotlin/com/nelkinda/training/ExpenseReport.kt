@@ -22,6 +22,9 @@ class Expense {
         }
         return expenseName
     }
+
+    fun isOverLimit() =
+        this.type == ExpenseType.DINNER && this.amount > 5000 || this.type == ExpenseType.BREAKFAST && this.amount > 1000
 }
 
 class ExpenseReport {
@@ -42,8 +45,7 @@ class ExpenseReport {
             }
 
             val expenseName = expense.name()
-            val mealOverExpensesMarker =
-                if (expense.type == ExpenseType.DINNER && expense.amount > 5000 || expense.type == ExpenseType.BREAKFAST && expense.amount > 1000) "X" else " "
+            val mealOverExpensesMarker = if (expense.isOverLimit()) "X" else " "
 
             println(expenseName + "\t" + expense.amount + "\t" + mealOverExpensesMarker)
 
