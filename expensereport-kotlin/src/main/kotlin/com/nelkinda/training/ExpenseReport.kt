@@ -1,6 +1,6 @@
 package com.nelkinda.training
 
-import java.util.Date
+import java.util.*
 
 enum class ExpenseType {
     DINNER, BREAKFAST, CAR_RENTAL
@@ -43,17 +43,30 @@ class ExpenseReport {
             if (expense.isMeal()) {
                 mealExpenses += expense.amount
             }
+        }
 
-            val expenseName = expense.name()
-            val mealOverExpensesMarker = if (expense.isOverLimit()) "X" else " "
-
-            println(expenseName + "\t" + expense.amount + "\t" + mealOverExpensesMarker)
+        for (expense in expenses) {
 
             total += expense.amount
         }
 
+        reportExpenses(expenses)
+
+
         println("Meal expenses: $mealExpenses")
         println("Total expenses: $total")
+    }
+
+    private fun reportExpenses(expenses: List<Expense>) {
+        for (expense in expenses) {
+            reportSingleExpense(expense)
+        }
+    }
+
+    private fun reportSingleExpense(expense: Expense) {
+        val expenseName = expense.name()
+        val mealOverExpensesMarker = if (expense.isOverLimit()) "X" else " "
+        println(expenseName + "\t" + expense.amount + "\t" + mealOverExpensesMarker)
     }
 
 }
