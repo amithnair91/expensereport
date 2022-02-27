@@ -3,15 +3,16 @@ package com.nelkinda.training
 import java.util.*
 
 enum class ExpenseType {
-    DINNER, BREAKFAST, CAR_RENTAL
+    DINNER, BREAKFAST, CAR_RENTAL;
+
+    fun isMeal() = this == DINNER || this == BREAKFAST
 }
 
 class Expense {
     lateinit var type: ExpenseType
     var amount: Int = 0
 
-    fun isMeal() =
-        this.type == ExpenseType.DINNER || this.type == ExpenseType.BREAKFAST
+    fun isMeal() = type.isMeal()
 
     fun name(): String {
         var expenseName = ""
