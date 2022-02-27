@@ -2,16 +2,17 @@ package com.nelkinda.training
 
 import java.util.*
 
-enum class ExpenseType {
-    DINNER(true), BREAKFAST(true), CAR_RENTAL(false);
+enum class ExpenseType(isMeal: Boolean, name: String) {
+    DINNER(true, "Dinner"),
+    BREAKFAST(true, "Breakfast"),
+    CAR_RENTAL(false, "Car Rental");
 
-    private var _isMeal: Boolean
-
-    constructor(isMeal: Boolean) {
-        this._isMeal = isMeal;
-    }
+    private var _name: String = name
+    private var _isMeal: Boolean = isMeal
 
     fun isMeal() = _isMeal
+
+    fun expenseName(): String = _name
 }
 
 class Expense {
@@ -21,13 +22,7 @@ class Expense {
     fun isMeal() = type.isMeal()
 
     fun name(): String {
-        var expenseName = ""
-        when (this.type) {
-            ExpenseType.DINNER -> expenseName = "Dinner"
-            ExpenseType.BREAKFAST -> expenseName = "Breakfast"
-            ExpenseType.CAR_RENTAL -> expenseName = "Car Rental"
-        }
-        return expenseName
+        return type.expenseName()
     }
 
     fun isOverLimit() =
