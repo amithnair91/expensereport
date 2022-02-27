@@ -59,10 +59,18 @@ class ExpenseReport {
     }
 
     fun printReport(date: Date, expenses: Expenses) {
-        println("Expenses $date")
+        reportHeader(date)
         reportExpenses(expenses)
+        resportExpenseSummary(expenses)
+    }
+
+    private fun resportExpenseSummary(expenses: Expenses) {
         println("Meal expenses: ${expenses.meals()}")
         println("Total expenses: ${expenses.total()}")
+    }
+
+    private fun reportHeader(date: Date) {
+        println("Expenses $date")
     }
 
     private fun reportExpenses(expenses: Expenses) {
