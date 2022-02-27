@@ -1,0 +1,13 @@
+Expenses Tue Jan 20 02:11:12 CET 1970
+Lunch	0	 
+Lunch	-100	 
+Lunch	999	 
+Lunch	1000	 
+Lunch	1001	 
+Lunch	4000	X
+Lunch	4999	X
+Lunch	5000	X
+Lunch	5001	X
+Lunch	1000000	X
+Meal expenses: 1021900
+Total expenses: 1021900

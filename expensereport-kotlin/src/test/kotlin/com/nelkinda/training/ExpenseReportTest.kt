@@ -90,6 +90,31 @@ class ExpenseReportTest {
     }
 
     @Test
+    fun lunchExpenseReport() {
+        val date = Date(1645872240)
+        val approval = ApprovalUtilities().writeSystemOutToStringBuffer()
+
+        ExpenseReport().printReport(
+            date, Expenses(
+                listOf(
+                    createExpense(0, ExpenseType.LUNCH),
+                    createExpense(-100, ExpenseType.LUNCH),
+                    createExpense(999, ExpenseType.LUNCH),
+                    createExpense(1000, ExpenseType.LUNCH),
+                    createExpense(1001, ExpenseType.LUNCH),
+                    createExpense(4000, ExpenseType.LUNCH),
+                    createExpense(4999, ExpenseType.LUNCH),
+                    createExpense(5000, ExpenseType.LUNCH),
+                    createExpense(5001, ExpenseType.LUNCH),
+                    createExpense(1000000, ExpenseType.LUNCH)
+                )
+            )
+        )
+
+        Approvals.verify(approval)
+    }
+
+    @Test
     fun miscellaneousExpenseReport() {
         val date = Date(1645872240)
         val approval = ApprovalUtilities().writeSystemOutToStringBuffer()

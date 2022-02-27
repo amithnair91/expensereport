@@ -5,7 +5,8 @@ import java.util.*
 enum class ExpenseType(isMeal: Boolean, name: String, limit: Int) {
     DINNER(true, "Dinner", 5000),
     BREAKFAST(true, "Breakfast", 1000),
-    CAR_RENTAL(false, "Car Rental", Int.MAX_VALUE);
+    CAR_RENTAL(false, "Car Rental", Int.MAX_VALUE),
+    LUNCH(true, "Lunch", 3000);
 
     private var _name: String = name
     private var _isMeal: Boolean = isMeal
