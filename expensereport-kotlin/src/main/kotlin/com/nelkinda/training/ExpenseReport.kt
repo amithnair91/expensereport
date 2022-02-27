@@ -2,17 +2,20 @@ package com.nelkinda.training
 
 import java.util.*
 
-enum class ExpenseType(isMeal: Boolean, name: String) {
-    DINNER(true, "Dinner"),
-    BREAKFAST(true, "Breakfast"),
-    CAR_RENTAL(false, "Car Rental");
+enum class ExpenseType(isMeal: Boolean, name: String, limit: Int) {
+    DINNER(true, "Dinner", 5000),
+    BREAKFAST(true, "Breakfast", 1000),
+    CAR_RENTAL(false, "Car Rental", Int.MAX_VALUE);
 
     private var _name: String = name
     private var _isMeal: Boolean = isMeal
+    private var _limit: Int = limit
 
     fun isMeal() = _isMeal
 
     fun expenseName(): String = _name
+
+    fun isOverLimit(amount: Int) = amount > _limit
 }
 
 class Expense {
@@ -26,7 +29,7 @@ class Expense {
     }
 
     fun isOverLimit() =
-        this.type == ExpenseType.DINNER && this.amount > 5000 || this.type == ExpenseType.BREAKFAST && this.amount > 1000
+        type.isOverLimit(amount)
 }
 
 class Expenses(private val expenses: List<Expense>) : Iterable<Expense> {
