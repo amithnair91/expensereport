@@ -3,9 +3,15 @@ package com.nelkinda.training
 import java.util.*
 
 enum class ExpenseType {
-    DINNER, BREAKFAST, CAR_RENTAL;
+    DINNER(true), BREAKFAST(true), CAR_RENTAL(false);
 
-    fun isMeal() = this == DINNER || this == BREAKFAST
+    private var _isMeal: Boolean
+
+    constructor(isMeal: Boolean) {
+        this._isMeal = isMeal;
+    }
+
+    fun isMeal() = _isMeal
 }
 
 class Expense {
